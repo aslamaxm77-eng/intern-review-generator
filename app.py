@@ -126,8 +126,13 @@ if "feedback" in st.session_state:
         f"**Advisor:** {st.session_state['advisor']}"
     )
 
-    st.write(
-        f"**Score:** {st.session_state['score']}"
+    manual_score = st.number_input(
+    "Score",
+    min_value=0.0,
+    max_value=8.5,
+    value=float(st.session_state["score"]),
+    step=0.5,
+    key="manual_score"
     )
 
     st.write(
@@ -150,6 +155,7 @@ if "feedback" in st.session_state:
 
     st.session_state["feedback"] = feedback_text
     st.session_state["pending_topics"] = pending_text
+    st.session_state["score"] = manual_score
 
     col1, col2 = st.columns(2)
 
@@ -166,9 +172,9 @@ if "feedback" in st.session_state:
                     "advisor_email"
                 ],
                 intern_name=st.session_state["name"],
-                score=st.session_state["score"],
+                score=manual_score,
                 status=st.session_state["status"],
-                feedback=st.session_state["feedback"],
+                feedback=feedback_text,
                 pending_topics=st.session_state[
                     "pending_topics"
                 ]
