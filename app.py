@@ -195,9 +195,9 @@ if "feedback" in st.session_state:
                 "advisor_phone"
             ],
             intern_name=st.session_state["name"],
-            score=st.session_state["score"],
+            score=manual_score,
             status=st.session_state["status"],
-            feedback=st.session_state["feedback"],
+            feedback=feedback_text,
             pending_topics=st.session_state[
                 "pending_topics"
             ]
